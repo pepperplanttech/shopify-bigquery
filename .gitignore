@@ -1,0 +1,34 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+# Ignore virtual environment directories
+venv/
+env/
+.venv/
+# Ignore IDE/editor specific files
+.vscode/
+.idea/
+*.swp
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore environment variable files
+.env
+
+# Ignore Terraform's temporary files and local cache
+.terraform/
+
+# Ignore credentials/sensitive variables
+*.tfvars
+*.tfvars.json
+
+# Ignore state files if not using a remote backend (though a remote backend is best practice)
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfstate.*.backup
+
+# Ignore deployment package
+function.zip

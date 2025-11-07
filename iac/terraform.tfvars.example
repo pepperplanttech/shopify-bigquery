@@ -1,0 +1,6 @@
+project_id       = ""               # The GCP project id
+dataset_location = ""               # Override default GCP dataset location 
+
+function_env_vars = {
+  GCP_PROJECT_ID = ""               # The GCP project id (duplicated here for runtime env var)
+}
