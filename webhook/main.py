@@ -1,6 +1,6 @@
 from flask import jsonify
 from pydantic import ValidationError
-from schemas import CartsCreateUpdateWebhook, LineItem
+from models import CartsCreateUpdateWebhook, LineItem
 from google.cloud import bigquery
 from datetime import datetime
 import os
