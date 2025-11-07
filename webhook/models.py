@@ -8,7 +8,7 @@ Models have been slimmed down for 'carts/create' and 'carts/update' webhook payl
 """
 class LineItem(BaseModel):
     """
-    Represents a single item in the cart, compatible with both carts/create and carts/update webhook payloads.
+    Represents a single item in the cart, compatible with both 'carts/create' and 'carts/update' webhook payloads.
     """
     id: Optional[int] = Field(None, description="The unique identifier for the line item.")
     quantity: int = Field(..., description="The quantity of the item.")
@@ -26,9 +26,10 @@ class LineItem(BaseModel):
     total_discount: Optional[str] = Field(None, description="The total discount amount for this line item.")
     vendor: str = Field(..., description="The vendor of the product.")
 
+
 # Models for the Webhook Payloads
 class CartsCreateUpdateWebhook(BaseModel):
-    """Slimmed down Pydantic model for the Shopify 'carts/create' and 'carts/update'webhook payloads."""
+    """Slimmed down Pydantic model for the Shopify 'carts/create' and 'carts/update' webhook payloads."""
     id: str = Field(..., description="The unique ID of the cart.")
     token: str = Field(..., description="A unique token that identifies the cart (often the same as 'id').")
     note: Optional[str] = Field(None, description="Extra information about the cart.")
