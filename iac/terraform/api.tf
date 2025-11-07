@@ -5,11 +5,10 @@ resource "google_project_service" "cloudrun" {
   disable_on_destroy = false
 }
 
-# Ensure the Cloud Functions API is enabled
+# Enable Cloud Functions API
 resource "google_project_service" "cloudfunctions" {
   project = var.project_id
   service = "cloudfunctions.googleapis.com"
   disable_on_destroy = false
-  # Explicitly depend on Cloud Run for robustness
   depends_on = [google_project_service.cloudrun]
 }

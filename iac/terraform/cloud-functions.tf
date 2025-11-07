@@ -1,35 +1,16 @@
-# 1. Define the Archive Data Source to automatically zip the code
+# Define the Archive Data Source to automatically zip the code
 data "archive_file" "source_archive" {
   type        = "zip"
-  source_dir  = "../webhook"  # The directory to zip up
+  source_dir  = "../../webhook"  # The directory to zip up
   output_path = "function.zip" # The name and path of the created zip file
 }
 
-# 2. Upload the dynamically created zipped code file to the bucket
-# Define a bucket to hold the zipped function code
-resource "google_storage_bucket" "function_source" {
-  project       = var.project_id
-  name          = "${var.project_id}-shopify-webhooks-source"
-  location      = var.dataset_location
-  force_destroy = true 
-  uniform_bucket_level_access = true
-}
-
-resource "google_storage_bucket_object" "archive" {
-  name   = "source.zip"
-  bucket = google_storage_bucket.function_source.name
-  
-  # Reference the output file path from the data source
-  source = data.archive_file.source_archive.output_path 
-}
-
-# 3. Deploy the Cloud Function (Generation 2)
+# Deploy the Cloud Function (Generation 2)
 resource "google_cloudfunctions2_function" "webhook_function" {
   name     = "shopify-carts-webhook"
   location = var.dataset_location 
   project  = var.project_id
   
-  # --- Source Configuration ---
   build_config {
     runtime     = "python311"
     entry_point = "shopify_webhook_handler"

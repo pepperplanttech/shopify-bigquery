@@ -1,10 +1,10 @@
 
-# Data source to fetch the Project Number (required for the service account email)
+# Data source to fetch the project number
 data "google_project" "current" {
   project_id = var.project_id
 }
 
-# Reference the existing BigQuery dataset ID created in main.tf
+# Reference the existing BigQuery dataset ID
 locals {
   dataset_id = "shopify_raw_data"
   gcf_source_bucket_name = "gcf-v2-sources-${data.google_project.current.number}-${var.dataset_location}"

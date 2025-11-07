@@ -1,18 +1,3 @@
-provider "google" {
-  project = var.project_id 
-  region  = var.dataset_location
-  billing_project = var.project_id 
-  // 🎯 Tell the provider to override the default ADC setting
-  user_project_override = true 
-}
-
-provider "google-beta" {
-  project = var.project_id
-  region  = var.dataset_location
-  billing_project = var.project_id
-  user_project_override = true
-}
-
 resource "google_bigquery_dataset" "shopify_raw_data" {
   dataset_id                  = "shopify_raw_data"
   friendly_name               = "Shopify Raw Webhook Data"
@@ -71,4 +56,3 @@ resource "google_bigquery_table" "carts_create_update" {
 ]
 EOF
 }
-
