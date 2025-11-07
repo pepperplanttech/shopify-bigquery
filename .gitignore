@@ -3,14 +3,17 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
 # Ignore virtual environment directories
 venv/
 env/
 .venv/
+
 # Ignore IDE/editor specific files
 .vscode/
 .idea/
 *.swp
+
 # Ignore system files
 .DS_Store
 Thumbs.db
