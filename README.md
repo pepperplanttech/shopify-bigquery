@@ -10,7 +10,7 @@ The primary components include:
 
 The workflow is simple:
 * Shopify sends data via an HTTP POST to an API endpoint
-* API endpoint receives the json webhook payload
+* API endpoint receives the json webhook payload, and validates using Pydantic models
 * The data is persisted in BigQuery
 * The data is retrieved for visualization via a SQL query
 
