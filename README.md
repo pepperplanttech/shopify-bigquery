@@ -3,7 +3,7 @@
 This demo project illustrates an end to end solution for persisting and visualizing Shopify webhook data using the Google Cloud Platform.
 
 The primary components include:
-* Terraform configuration for cloud deployment of resources (IaC / infrastructure as code)
+* Terraform configuration for cloud of resource deployment (IaC, or infrastructure as code)
 * Google Cloud Function written in Python (to receive and persist Shopify webook payload)
 * Google BigQuery dataset to store webhook data
 * Google Looker Studio to visualize the data
