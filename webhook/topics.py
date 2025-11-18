@@ -1,6 +1,5 @@
 from bigquery import stream_to_bq_carts_create_update
 from datetime import datetime
-from flask import jsonify
 from google.cloud import bigquery
 from pydantic import ValidationError
 from models import CartsCreateUpdateWebhook, LineItem
@@ -11,16 +10,12 @@ import pytz
 GCP_PROJECT_ID = os.getenv("GCP_PROJECT_ID")
 bigquery_client = bigquery.Client()
 
-topic_handlers = {
-    "carts/create": "handle_cart_create_update",
-    "carts/update": "handle_cart_create_update",
-}
 
 class TopicHandlerResult:
-    def __init__(self, status: str, message: str = "", response_code: int = 200):
-        self.status: str = status
-        self.message: str = message
-        self.response_code: int = response_code
+    def __init__(self, status: str = "", message: str = "", response_code: int = 200):
+        self.status = status
+        self.message = message
+        self.response_code = response_code
 
 def handle_cart_create_update(data: dict, topic: str = "") -> TopicHandlerResult:
     topic_handler_result = TopicHandlerResult()
@@ -79,4 +74,9 @@ def prepare_line_item_bq_carts_create_update(item: LineItem) -> dict:
         "vendor": item.vendor,
     }
 
+topic_handlers = {
+    "carts/create": handle_cart_create_update,
+    "carts/update": handle_cart_create_update,
+}
 
+accepted_topics = list(topic_handlers.keys())

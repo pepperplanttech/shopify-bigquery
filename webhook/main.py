@@ -1,12 +1,12 @@
-from flask import jsonify, Request
+from flask import jsonify
 import os
-from topics import topic_handlers
 from validation import verify_valid_request
+from topics import topic_handlers
 
 
 GCP_PROJECT_ID = os.getenv("GCP_PROJECT_ID")
 
-def shopify_webhook_handler(request: Request):
+def shopify_webhook_handler(request=None):
     """
     Google Cloud Function to handle Shopify Webhook events.
     Processes 'carts/create' and 'carts/update' events and streams data to Big Query.
@@ -23,3 +23,6 @@ def shopify_webhook_handler(request: Request):
     topic_hander_result = topic_handlers[topic](validation_result.request_data, topic)
 
     return jsonify({"status": "success", "message": topic_hander_result.message}), topic_hander_result.response_code
+
+    # return jsonify({"status": "success", "message": "Webhook processed successfully"}), 200
+

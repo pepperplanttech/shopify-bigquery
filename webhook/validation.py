@@ -7,11 +7,11 @@ from typing import Union
 
 
 class ValidationResult:
-    def __init__(self, is_valid: bool, message: str = None, response_code: int = 200):
+    def __init__(self, is_valid: bool, message: str = None, response_code: int = 200, request_data: dict = None):
         self.is_valid = is_valid
         self.message = message
         self.response_code = response_code
-        self.request_data = None
+        self.request_data = request_data
 
 def verify_valid_request(request: Request, GCP_PROJECT_ID: str, topic: str) -> ValidationResult:
     # TODO: Implement shopify request header signature verification
