@@ -16,4 +16,5 @@ The workflow is simple:
 
 The project deployment:
 * Terraform configuration files define the Google Cloud resources
+* GCP project specific configuration defined in terraform.tfvars
 * A shell script contains the commands to deploy the project with a single command
