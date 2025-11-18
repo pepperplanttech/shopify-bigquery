@@ -23,6 +23,3 @@ def shopify_webhook_handler(request=None):
     topic_hander_result = topic_handlers[topic](validation_result.request_data, topic)
 
     return jsonify({"status": "success", "message": topic_hander_result.message}), topic_hander_result.response_code
-
-    # return jsonify({"status": "success", "message": "Webhook processed successfully"}), 200
-
