@@ -2,6 +2,8 @@
 
 This demo project illustrates an end to end solution for persisting and visualizing Shopify webhook data using the Google Cloud Platform.
 
+![Shopify - Google Cloud Function - BigQuery - Google Looker Studio](images/shopify-bigquery-sm.jpg "a title")
+
 The primary components include:
 * Terraform configuration for cloud of resource deployment (IaC, or infrastructure as code)
 * Google Cloud Function written in Python (to receive and persist Shopify webook payload)
@@ -21,3 +23,5 @@ The project deployment:
 
 Data Visualization:
 * Data visualized in Google Looker Studio via SQL query
+
+![Data visualization in Google Looker Studio](images/data-visualization.jpg "a title")
