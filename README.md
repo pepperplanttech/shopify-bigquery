@@ -18,3 +18,6 @@ The project deployment:
 * Terraform configuration files define the Google Cloud resources
 * GCP project specific configuration defined in terraform.tfvars
 * A shell script contains the commands to deploy the project with a single command
+
+Data Visualization:
+* Data visualized in Google Looker Studio via SQL query
